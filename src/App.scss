@@ -1,0 +1,87 @@
+.body {
+    display: block
+}
+
+.inline {
+    display: inline
+}
+
+.align-right {
+    text-align: right
+}
+
+.no-legend {
+    list-style-type: none
+}
+
+.list-item {
+    display: inline-block;
+    padding: 20px;
+}
+
+a {
+    color: #d86805 !important;
+    cursor: pointer;
+}
+
+a:hover {
+    color: red !important;
+    cursor: pointer;
+}
+
+.top-nav {
+    background-color: #352c2c;
+    height: 75px;
+}
+
+.image {
+    height: 675px;
+    width: 100%;
+    background-image: url('../assets/maturity.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+.parent {
+    position: relative;
+}
+
+.newSection {
+    padding-top: 20px;
+}
+
+.matrix-text {
+    width: 100%;
+    text-align: center;
+    padding-top: 20%;
+    font-size: 80px;
+    font-weight: 800;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.about {
+    background-color: #352c2c;
+    height: 580px;
+    width:100%;
+    color:#d86805;
+}
+
+.align-center{ 
+    text-align: center;
+}
+
+.start-button {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.relative {
+    position: relative;
+}
