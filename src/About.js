@@ -31,7 +31,6 @@ class About extends React.Component {
                     </ul>
                     <div className="start-button">
                         <Link className="btn btn-light btn-xl js-scroll-trigger" to={'/test'}>Get Started</Link>
-                        <a class="btn btn-light btn-xl js-scroll-trigger">Get Started!</a>
                     </div>
                 </section>
             </div>

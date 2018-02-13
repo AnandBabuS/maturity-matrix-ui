@@ -4,10 +4,10 @@ const Menus = (props) => {
     return (
       <ul className="no-legend">
         <li className="list-item">
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#about">Portfolio</a>
+          <a className="btn btn-light btn-xl js-scroll-trigger" href="#about">Portfolio</a>
         </li>
         <li className="list-item">
-          <a class="btn btn-light btn-xl js-scroll-trigger" href="#contact">Contact</a>
+          <a className="btn btn-light btn-xl js-scroll-trigger" href="#contact">Contact</a>
         </li>
       </ul>
     )

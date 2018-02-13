@@ -1,3 +1,4 @@
+
 .body {
     display: block
 }
@@ -85,3 +86,17 @@ a:hover {
 .relative {
     position: relative;
 }
+
+// tab components
+
+.widen {
+    width: 70% !important;
+}
+
+
+.spacing-around {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
