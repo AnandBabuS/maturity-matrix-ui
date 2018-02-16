@@ -1,16 +1,32 @@
 import React from 'react'
 
 import Tabs from './components/Tabs'
+import Questions from './Questions'
+import { questionsConfig } from './config'
  
 class Test extends React.Component {
+
+   constructor(props) {
+     super(props)
+     this.getQuestions = this.getQuestions.bind(this)
+   }
+
+   getQuestions(key) {
+     console.log(key)
+     console.log(questionsConfig)
+     console.log(questionsConfig[key])
+      return questionsConfig[key]
+   }
+
    render() {
       return (
-        <Tabs 
+        <div className="testPage">
+        <Tabs
           data={
             [{
-              index: 'TAB1',
-              content: 'Content 1',
-              title: 'tab 1 title'
+              index: 'Team',
+              content: <Questions data={this.getQuestions('team1')}/>,
+              title: 'Team'
             },
             {
               index: 'TAB2',
@@ -35,6 +51,7 @@ class Test extends React.Component {
             }]
           }
         />
+        </div>
       );
    }
 }

@@ -11,7 +11,7 @@ class App extends React.Component {
    render() {
       return (
         <Router>
-            <div>
+            <div style={{height: '100%', color: '#d86805' }}>
                 {/* <ul>
                     <li className={styles.inline}><Link to={'/'}>Home</Link></li>
                     <li className={styles.inline}><Link to={'/test'}>test</Link></li>
