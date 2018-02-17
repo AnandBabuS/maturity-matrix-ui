@@ -9,7 +9,7 @@ constructor(props) {
     super(props)
     this.state = {
         collapsed: true,
-        selectedData: '1',
+        selectedData: '2',
     }
     this.changeState = this.changeState.bind(this)
     this.onDataSelected = this.onDataSelected.bind(this)
@@ -24,7 +24,7 @@ changeState() {
 onDataSelected(data) {
     this.setState({
         selectedData: data,
-    })
+    }, this.props.onChange({ [this.props.index]: parseInt(data) }))
 }
 
 render() {
@@ -43,8 +43,8 @@ render() {
                     </div>
                     <div className="graph">
                         <MaturityLevel
-                            matured={ this.state.selectedData ? 20 * parseInt(this.state.selectedData) : 0 }
-                            gap={ this.state.selectedData ? 20 * ( 5 - parseInt(this.state.selectedData)) : 0 }
+                            matured={ this.state.selectedData ? 25 * parseInt(this.state.selectedData) : 0 }
+                            gap={ this.state.selectedData ? 25 * ( 4 - parseInt(this.state.selectedData)) : 0 }
                         />
                     </div>
                 </div>

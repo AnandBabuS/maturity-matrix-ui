@@ -8,14 +8,22 @@ class Test extends React.Component {
 
    constructor(props) {
      super(props)
+     this.state = {
+       team1: null,
+       PO: null,
+       scrumMaster: null,
+     }
      this.getQuestions = this.getQuestions.bind(this)
+     this.onsubmit = this.onsubmit.bind(this)
    }
 
    getQuestions(key) {
-     console.log(key)
-     console.log(questionsConfig)
-     console.log(questionsConfig[key])
       return questionsConfig[key]
+   }
+
+   onsubmit(data) {
+     console.log(data)
+    this.setState(data)
    }
 
    render() {
@@ -25,7 +33,11 @@ class Test extends React.Component {
           data={
             [{
               index: 'Team',
-              content: <Questions data={this.getQuestions('team1')}/>,
+              content: <Questions
+                onSubmit={this.onsubmit}
+                data={this.getQuestions('team1')}
+                index={'team1'}
+              />,
               title: 'Team'
             },
             {
