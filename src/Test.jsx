@@ -1,70 +1,100 @@
 import React from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import { browserHistory } from 'react-router';
 
 import Tabs from './components/Tabs'
 import Questions from './Questions'
 import { questionsConfig } from './config'
- 
+
 class Test extends React.Component {
 
    constructor(props) {
      super(props)
-     this.state = {
-       team1: null,
-       PO: null,
-       scrumMaster: null,
-     }
+
      this.getQuestions = this.getQuestions.bind(this)
+     this.getNextTab = this.getNextTab.bind(this)
      this.onsubmit = this.onsubmit.bind(this)
+
+     this.tabData = [{
+      index: 'team',
+      content: <Questions
+        onSubmit={this.onsubmit}
+        data={this.getQuestions('team')}
+        index={'team'}
+      />,
+      title: 'Team'
+    },
+    {
+      index: 'productOwner',
+      content: <Questions
+        onSubmit={this.onsubmit}
+        data={this.getQuestions('productOwner')}
+        index={'productOwner'}
+      />,
+      title: 'Product Owner'
+    },
+    {
+      index: 'scrumMaster',
+      content: <Questions
+        onSubmit={this.onsubmit}
+        data={this.getQuestions('scrumMaster')}
+        index={'scrumMaster'}
+      />,
+      title: 'Scrum Master',
+      selected: true,
+    },
+    {
+      index: 'sprintPlanning',
+      content: <Questions
+        onSubmit={this.onsubmit}
+        data={this.getQuestions('sprintPlanning')}
+        index={'sprintPlanning'}
+      />,
+      title: 'Sprint Planning'
+    },
+    {
+      index: 'releasePlanning',
+      content: <Questions
+        onSubmit={this.onsubmit}
+        data={this.getQuestions('releasePlanning')}
+        index={'releasePlanning'}
+      />,
+      title: 'Release Planning'
+    }]
    }
 
    getQuestions(key) {
       return questionsConfig[key]
    }
 
-   onsubmit(data) {
-     console.log(data)
-    this.setState(data)
+   getNextTab(tab) {
+      const index = this.tabData.findIndex((element) => {
+        return element.index === tab
+      })
+      return this.tabData[index + 1] ? this.tabData[index + 1].index : ''
    }
+
+   onsubmit(data) {
+    this.setState(data, () => {
+      const index = this.getNextTab(Object.keys(data)[0])
+      if(index) {
+        this.tabs.tabSelected(index)
+      } else {
+        console.log(this.state)
+        this.props.history.push('/result')
+      }
+    })
+  }
 
    render() {
       return (
         <div className="testPage">
         <Tabs
-          data={
-            [{
-              index: 'Team',
-              content: <Questions
-                onSubmit={this.onsubmit}
-                data={this.getQuestions('team1')}
-                index={'team1'}
-              />,
-              title: 'Team'
-            },
-            {
-              index: 'TAB2',
-              content: 'Content 2',
-              title: 'tab 2 title'
-            },
-            {
-              index: 'TAB3',
-              content: 'Content 3',
-              title: 'tab 3 title',
-              selected: true,
-            },
-            {
-              index: 'TAB4',
-              content: 'Content 4',
-              title: 'tab 4 title'
-            },
-            {
-              index: 'TAB5',
-              content: 'Content 5',
-              title: 'tab 5 title'
-            }]
-          }
+          ref={ (tabs) => { this.tabs = tabs }}
+          data={ this.tabData }
         />
         </div>
       );
    }
 }
-export default Test;
+export default withRouter(Test)

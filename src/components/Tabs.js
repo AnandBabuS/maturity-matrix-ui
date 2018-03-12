@@ -20,7 +20,7 @@ class Tabs extends React.Component {
     }
 
     tabSelected(selectedIndex) {
-        this.setState({selectedIndex})
+        this.setState({ selectedIndex })
     }
 
     copyPropsToState() {
